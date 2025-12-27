@@ -5,6 +5,7 @@ import { FiSun, FiMoon, FiMenu, FiX } from "react-icons/fi";
 
 const Navbar = () => {
   const { theme, toggleTheme } = useTheme();
+
   const [isOpen, setIsOpen] = useState(false); 
   const location = useLocation(); 
 
