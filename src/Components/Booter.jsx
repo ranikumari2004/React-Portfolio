@@ -36,10 +36,10 @@ const Booter = () => {
           <div className="space-y-4">
             <h3 className="text-lg font-semibold text-gray-900 dark:text-white">Connect</h3>
             <div className="flex space-x-4">
-              <SocialIcon href="https://github.com/rani-kumari" icon={<FaGithub />} />
-              <SocialIcon href="https://linkedin.com/in/rani-kumari" icon={<FaLinkedin />} />
+              <SocialIcon href="https://github.com/ranikumari2004" icon={<FaGithub />} />
+              <SocialIcon href="https://www.linkedin.com/in/rani-kumari-250a47274/" icon={<FaLinkedin />} />
               <SocialIcon href="https://twitter.com" icon={<FaTwitter />} />
-              <SocialIcon href="mailto:contact@rani.dev" icon={<FaEnvelope />} />
+              <SocialIcon href="mailto:rnistherock06@gmail.com" icon={<FaEnvelope />} />
             </div>
             <p className="text-sm text-gray-500 dark:text-gray-500 pt-2">
               Based in Rajkot, India 🇮🇳

@@ -64,8 +64,8 @@ const Contact = () => {
             <ContactCard 
                 icon={<FaPhoneAlt />} 
                 title="Call Me" 
-                value="+91 6206173716" 
-                link="tel:+7672810643"
+                value="+91 xxxxxxxx16" 
+                link="tel:"
             />
             <ContactCard 
                 icon={<FaMapMarkerAlt />} 
@@ -78,8 +78,8 @@ const Contact = () => {
             <div className="pt-8">
                 <h3 className="text-xl font-bold mb-4">Follow Me</h3>
                 <div className="flex gap-4">
-                    <SocialBtn icon={<FaGithub />} link="https://github.com/rani-kumari" />
-                    <SocialBtn icon={<FaLinkedin />} link="https://linkedin.com/in/rani-kumari" />
+                    <SocialBtn icon={<FaGithub />} link="https://github.com/ranikumari2004" />
+                    <SocialBtn icon={<FaLinkedin />} link="https://www.linkedin.com/in/rani-kumari-250a47274/" />
                     <SocialBtn icon={<FaTwitter />} link="https://twitter.com" />
                 </div>
             </div>
