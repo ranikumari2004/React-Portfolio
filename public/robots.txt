@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://ranikumari02.vercel.app/sitemap.xml
