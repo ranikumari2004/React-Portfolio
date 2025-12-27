@@ -58,14 +58,14 @@ const Contact = () => {
             <ContactCard 
                 icon={<FaEnvelope />} 
                 title="Email Me" 
-                value="contact@rani.dev" 
+                value="rnistherock06@gmail.com" 
                 link="mailto:contact@rani.dev"
             />
             <ContactCard 
                 icon={<FaPhoneAlt />} 
                 title="Call Me" 
-                value="+91 98765 43210" 
-                link="tel:+919876543210"
+                value="+91 6206173716" 
+                link="tel:+7672810643"
             />
             <ContactCard 
                 icon={<FaMapMarkerAlt />} 
