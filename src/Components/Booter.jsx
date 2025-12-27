@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { FaGithub, FaLinkedin, FaTwitter, FaEnvelope } from "react-icons/fa";
 
-const Footer = () => {
+const Booter = () => {
   const currentYear = new Date().getFullYear();
 
   return (
@@ -80,4 +80,4 @@ const SocialIcon = ({ href, icon }) => (
   </a>
 );
 
-export default Footer;
+export default Booter;
