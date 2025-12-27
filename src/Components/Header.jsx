@@ -3,7 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { useTheme } from "../auth/ThemeContext";
 import { FiSun, FiMoon, FiMenu, FiX } from "react-icons/fi"; 
 
-const Navbar = () => {
+const Header = () => {
   const { theme, toggleTheme } = useTheme();
 
   const [isOpen, setIsOpen] = useState(false); 
@@ -104,4 +104,4 @@ const ThemeButton = ({ theme, toggleTheme }) => (
   </button>
 );
 
-export default Navbar;
+export default Header;
