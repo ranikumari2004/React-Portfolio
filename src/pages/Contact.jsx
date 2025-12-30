@@ -24,7 +24,7 @@ const Contact = () => {
     setLoading(true);
 
     try {
-      const res = await fetch("http://localhost:5000/api/contact", {
+      const res = await fetch(`${process.env.REACT_APP_BACKEND_URL}/contact`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
@@ -36,9 +36,10 @@ const Contact = () => {
         showAlert("success", "Message sent successfully. I’ll get back to you soon!");
         setFormData({ name: "", email: "", message: "" });
       } else {
-        showAlert("error", "Failed to send message. Please try again.");
+        showAlert("error", data.message || "Failed to send message. Please try again.");
       }
     } catch (error) {
+      console.error("Error:", error);
       showAlert("error", "Server error. Please check your connection.");
     }
 
@@ -46,8 +47,8 @@ const Contact = () => {
   };
 
   return (
-   <div className="min-h-screen pt-24 pb-24 bg-gradient-to-br from-gray-100 to-orange-50 dark:from-gray-900 dark:to-gray-800 flex items-center justify-center px-4 relative">
-
+    <div className="min-h-screen pt-24 pb-24 bg-gradient-to-br from-gray-100 to-orange-50 dark:from-gray-900 dark:to-gray-800 flex items-center justify-center px-4 relative">
+      
       {/* ALERT */}
       {alert.show && (
         <div
@@ -74,13 +75,9 @@ const Contact = () => {
 
         {/* FORM CARD */}
         <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-xl p-8 rounded-3xl shadow-2xl border border-gray-200 dark:border-gray-700">
-
-          <h2 className="text-2xl font-bold mb-6">
-            Contact Form
-          </h2>
+          <h2 className="text-2xl font-bold mb-6">Contact Form</h2>
 
           <form onSubmit={handleSubmit} className="space-y-5">
-
             <input
               type="text"
               name="name"
@@ -118,7 +115,6 @@ const Contact = () => {
             >
               {loading ? "Sending..." : "Send Message"}
             </button>
-
           </form>
         </div>
       </div>
