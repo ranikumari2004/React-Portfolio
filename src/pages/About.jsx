@@ -1,10 +1,13 @@
-import { FaBriefcase, FaGraduationCap, FaLightbulb, FaUsers, FaRocket, FaHandshake } from "react-icons/fa";
+import { useState } from "react";
+import { FaBriefcase, FaGraduationCap, FaLightbulb, FaUsers, FaRocket, FaHandshake, FaCertificate, FaAward, FaBuilding, FaLaptopCode, FaExternalLinkAlt } from "react-icons/fa";
 
 const About = () => {
+  const [activeTab, setActiveTab] = useState("experience");
+
   return (
     <div className="min-h-screen bg-white dark:bg-gray-900 text-gray-900 dark:text-white transition-colors duration-300">
       
-      {/* --- HERO HEADER --- */}
+      {/* --- 1. HERO HEADER (Original) --- */}
       <div className="relative pt-32 pb-16 px-4 bg-orange-50 dark:bg-gray-900">
         <div className="max-w-4xl mx-auto text-center">
           <h1 className="text-4xl md:text-6xl font-extrabold mb-6">
@@ -19,16 +22,18 @@ const About = () => {
         </div>
       </div>
 
-      {/* --- MY STORY (The Hook) --- */}
+      {/* --- 2. MY STORY (Original Hook) --- */}
       <div className="py-16 px-4 max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
         <div className="relative">
-           {/* Abstract Image Placeholder or Your Photo */}
+           {/* Image Section */}
            <div className="absolute top-4 -left-4 w-full h-full bg-orange-200 dark:bg-gray-700 rounded-2xl z-0"></div>
-           <img 
-            src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
-            alt="Working on Laptop" 
-            className="relative z-10 rounded-2xl shadow-xl w-full h-auto object-cover grayscale hover:grayscale-0 transition-all duration-500"
-           />
+           <div className="relative z-10 rounded-2xl overflow-hidden shadow-xl aspect-[4/3]">
+             <img 
+               src="/rani-kumari-mern-stack-developer.png" 
+               alt="Rani Working" 
+               className="w-full h-full object-cover hover:scale-110 transition-transform duration-700"
+             />
+           </div>
         </div>
         
         <div>
@@ -50,45 +55,117 @@ const About = () => {
         </div>
       </div>
 
-      {/* --- EXPERIENCE TIMELINE --- */}
+      {/* --- 3. PROFESSIONAL JOURNEY (The New Tab System) --- */}
       <div className="py-20 px-4 bg-gray-50 dark:bg-gray-800/50">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl font-bold mb-12 text-center">My Journey</h2>
-          
-          <div className="relative border-l-4 border-orange-200 dark:border-gray-700 ml-4 md:ml-0 space-y-12">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-3xl font-bold mb-8 text-center">My Career & Academics</h2>
+
+          {/* Tabs Navigation */}
+          <div className="flex flex-wrap justify-center gap-4 mb-12">
+            <TabButton 
+              active={activeTab === "experience"} 
+              onClick={() => setActiveTab("experience")} 
+              icon={<FaBriefcase />} 
+              label="Experience" 
+            />
+            <TabButton 
+              active={activeTab === "education"} 
+              onClick={() => setActiveTab("education")} 
+              icon={<FaGraduationCap />} 
+              label="Education" 
+            />
+            <TabButton 
+              active={activeTab === "certificates"} 
+              onClick={() => setActiveTab("certificates")} 
+              icon={<FaCertificate />} 
+              label="Certificates" 
+            />
+          </div>
+
+          {/* Dynamic Content */}
+          <div className="min-h-[400px]">
             
-            {/* Timeline Item 1: Job (Current) */}
-            <TimelineItem 
-              date="7th Sem - Present"
-              title="Full Stack Developer"
-              company="Jasya Consultancy"
-              desc="Currently working as a Full Stack Developer. Building scalable web applications, solving real-world problems, and optimizing performance for better user experience."
-              icon={<FaBriefcase />}
-              current={true}
-            />
+            {/* EXPERIENCE TAB */}
+            {activeTab === "experience" && (
+              <div className="space-y-10 max-w-4xl mx-auto border-l-4 border-orange-200 dark:border-gray-700 ml-4 md:ml-10 animate-fade-in-up">
+                {/* Jasya Consultancy */}
+                <TimelineCard 
+                  date="Aug 9, 2025 - Present" 
+                  role="Full Stack Developer"
+                  company="Jasya Consultancy Pvt. Ltd."
+                  desc="Currently working as a Full Stack Developer. Building scalable web applications, solving real-world problems, and optimizing performance for better user experience."
+                  icon={<FaBriefcase />}
+                  highlight={true}
+                />
+                {/* CodeSoft */}
+                <TimelineCard 
+                  date="Aug 1, 2024 - Aug 31, 2024"
+                  role="Web Development Intern"
+                  company="CodeSoft (Remote)"
+                  desc="Completed a 1-month intensive remote internship. Built portfolio websites and calculator apps using HTML, CSS, & JS. Gained experience in remote collaboration."
+                  icon={<FaRocket />}
+                />
+              </div>
+            )}
 
-            {/* Timeline Item 2: Internship */}
-            <TimelineItem 
-              date="6th Sem (1 Month)"
-              title="Remote Web Developer Intern"
-              company="Remote Internship"
-              desc="Gained hands-on experience in frontend technologies and learned how to collaborate in a remote team environment."
-              icon={<FaRocket />}
-            />
+            {/* EDUCATION TAB */}
+            {activeTab === "education" && (
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 animate-fade-in-up">
+                 <EducationCard 
+                   level="B.Tech Computer Engineering"
+                   institute="RK University, Rajkot"
+                   year="2022 - Present"
+                   score="Current Sem: 8th"
+                   color="blue"
+                 />
+                 <EducationCard 
+                   level="12th (Intermediate)"
+                   institute="R.V.M +2 Inter College, Maker"
+                   board="Bihar Board"
+                   year="Completed"
+                   score="76.4%" // 382 out of 500
+                   scoreDetail="Marks: 382 / 500"
+                   color="orange"
+                 />
+                 <EducationCard 
+                   level="10th (Matriculation)"
+                   institute="R.V.M High School, Maker"
+                   board="Bihar Board"
+                   year="Completed"
+                   score="72.4%"
+                   color="green"
+                 />
+              </div>
+            )}
 
-            {/* Timeline Item 3: College */}
-            <TimelineItem 
-              date="2022 - Present"
-              title="B.Tech Computer Engineering"
-              company="RK University, Rajkot"
-              desc="Currently in 8th Semester. Learned the fundamentals of Computer Science, Data Structures, and Software Engineering."
-              icon={<FaGraduationCap />}
-            />
+            {/* CERTIFICATES TAB */}
+            {activeTab === "certificates" && (
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 animate-fade-in-up">
+                <CertificateCard 
+                  title="Infosys Springboard"
+                  course="AI & Machine Learning"
+                  issuer="Infosys"
+                  desc="Completed comprehensive training on Artificial Intelligence foundations."
+                />
+                <CertificateCard 
+                  title="MERN Stack Bootcamp"
+                  course="Full Stack Development"
+                  issuer="Self / Online"
+                  desc="Mastered React, Node.js, Express, and MongoDB integration."
+                />
+                <CertificateCard 
+                  title="Java DSA"
+                  course="Data Structures"
+                  issuer="HackerRank"
+                  desc="Solved complex problems using Java and optimized algorithms."
+                />
+              </div>
+            )}
           </div>
         </div>
       </div>
 
-      {/* --- SOFT SKILLS --- */}
+      {/* --- 4. SOFT SKILLS (Original) --- */}
       <div className="py-20 px-4 max-w-7xl mx-auto">
         <h2 className="text-3xl font-bold mb-12 text-center">Why Work With Me?</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -100,7 +177,7 @@ const About = () => {
           <SkillCard 
             icon={<FaRocket />}
             title="Quick Learner"
-            desc="Technology evolves fast, and so do I. adapting to new tools and languages is one of my strongest suits."
+            desc="Technology evolves fast, and so do I. Adapting to new tools and languages is one of my strongest suits."
           />
           <SkillCard 
             icon={<FaHandshake />}
@@ -114,39 +191,91 @@ const About = () => {
   );
 };
 
-// --- Helper Components ---
+// --- HELPER COMPONENTS ---
 
-const TimelineItem = ({ date, title, company, desc, icon, current }) => (
-  <div className="relative pl-8 md:pl-0">
-    {/* Dot on Line */}
-    <div className={`absolute -left-[11px] top-0 w-6 h-6 rounded-full border-4 border-white dark:border-gray-900 ${current ? 'bg-orange-500 animate-pulse' : 'bg-gray-300 dark:bg-gray-600'}`}></div>
+const TabButton = ({ active, onClick, icon, label }) => (
+  <button
+    onClick={onClick}
+    className={`flex items-center gap-2 px-6 py-3 rounded-full font-bold transition-all duration-300 transform shadow-sm ${
+      active 
+      ? "bg-orange-600 text-white scale-105 shadow-orange-500/30" 
+      : "bg-white dark:bg-gray-700 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-600"
+    }`}
+  >
+    {icon} <span>{label}</span>
+  </button>
+);
+
+const TimelineCard = ({ date, role, company, desc, icon, highlight }) => (
+  <div className="relative pl-8">
+    {/* Dot */}
+    <div className={`absolute -left-[13px] top-0 w-6 h-6 rounded-full border-4 border-white dark:border-gray-900 ${highlight ? 'bg-orange-500 animate-pulse' : 'bg-gray-400'}`}></div>
     
-    <div className="md:flex items-start justify-between group">
-      {/* Date (Desktop Left) */}
-      <div className="hidden md:block w-1/3 text-right pr-12 pt-1">
-        <span className={`font-bold ${current ? 'text-orange-600' : 'text-gray-500'}`}>{date}</span>
-      </div>
-
-      {/* Content Card */}
-      <div className="md:w-2/3 bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md border border-gray-100 dark:border-gray-700 hover:shadow-xl hover:border-orange-500 transition-all duration-300">
-        <div className="md:hidden text-sm font-bold text-orange-600 mb-2">{date}</div>
-        <div className="flex items-center gap-3 mb-2">
-          <span className="text-2xl text-orange-500 bg-orange-100 dark:bg-orange-900/30 p-2 rounded-lg">{icon}</span>
+    <div className="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-lg border border-gray-100 dark:border-gray-700 hover:border-orange-500 transition-all group">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-2">
+        <div className="flex items-center gap-3">
+          <span className="p-2 bg-orange-100 dark:bg-orange-900/30 text-orange-600 rounded-lg text-lg">{icon}</span>
           <div>
-            <h3 className="text-xl font-bold text-gray-900 dark:text-white">{title}</h3>
-            <span className="text-sm font-medium text-gray-500 dark:text-gray-400">{company}</span>
+            <h3 className="text-xl font-bold text-gray-900 dark:text-white group-hover:text-orange-600 transition-colors">{role}</h3>
+            <span className="text-sm font-semibold text-gray-500 dark:text-gray-400">{company}</span>
           </div>
         </div>
-        <p className="text-gray-600 dark:text-gray-300 mt-3 leading-relaxed">
-          {desc}
-        </p>
+        <span className="mt-2 sm:mt-0 text-xs font-bold bg-gray-100 dark:bg-gray-700 px-3 py-1 rounded-full text-gray-600 dark:text-gray-300">
+            {date}
+        </span>
       </div>
+      <p className="text-gray-600 dark:text-gray-300 mt-2 leading-relaxed text-sm sm:text-base">
+        {desc}
+      </p>
     </div>
   </div>
 );
 
+const EducationCard = ({ level, institute, board, year, score, scoreDetail, color }) => {
+    const colors = { orange: "bg-orange-500", blue: "bg-blue-500", green: "bg-green-500" };
+    return (
+      <div className="relative overflow-hidden bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-md border border-gray-100 dark:border-gray-700 hover:-translate-y-1 transition-transform group">
+        <div className={`absolute top-0 left-0 w-full h-1 ${colors[color] || 'bg-gray-500'}`}></div>
+        
+        <div className="flex justify-between items-start mb-4">
+          <div>
+             <h3 className="text-lg font-bold text-gray-900 dark:text-white group-hover:text-orange-600 transition-colors">{level}</h3>
+             <p className="text-sm text-gray-500 dark:text-gray-400">{institute}</p>
+             {board && <p className="text-xs text-gray-400">{board}</p>}
+          </div>
+          <FaGraduationCap className="text-3xl text-gray-200 dark:text-gray-700" />
+        </div>
+  
+        <div className="flex items-center justify-between mt-4 bg-gray-50 dark:bg-gray-700/50 p-3 rounded-xl">
+           <span className="text-xs font-bold text-gray-500 dark:text-gray-400">{year}</span>
+           <div className="text-right">
+             <span className={`block text-lg font-bold ${color === 'orange' ? 'text-orange-600' : 'text-gray-900 dark:text-white'}`}>{score}</span>
+             {scoreDetail && <span className="text-[10px] text-gray-400 block">{scoreDetail}</span>}
+           </div>
+        </div>
+      </div>
+    );
+};
+
+const CertificateCard = ({ title, course, issuer, desc }) => (
+    <div className="group bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-md border border-gray-100 dark:border-gray-700 hover:shadow-xl hover:border-orange-500 transition-all relative overflow-hidden">
+        <FaCertificate className="absolute -bottom-6 -right-6 text-8xl text-gray-50 dark:text-gray-900 group-hover:text-orange-50 dark:group-hover:text-orange-900/10 transition-colors" />
+        <div className="relative z-10">
+            <div className="flex items-center justify-between mb-4">
+                <div className="w-10 h-10 bg-orange-100 dark:bg-orange-900/30 rounded-full flex items-center justify-center text-orange-600">
+                    <FaAward />
+                </div>
+                <FaExternalLinkAlt className="text-gray-300 group-hover:text-orange-500 transition-colors cursor-pointer" />
+            </div>
+            <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-1">{title}</h3>
+            <p className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-3">{issuer}</p>
+            <p className="text-sm text-gray-600 dark:text-gray-400">{desc}</p>
+        </div>
+    </div>
+);
+
 const SkillCard = ({ icon, title, desc }) => (
-  <div className="text-center p-8 rounded-2xl bg-gray-50 dark:bg-gray-800 hover:bg-orange-50 dark:hover:bg-gray-700 transition-colors duration-300">
+  <div className="text-center p-8 rounded-2xl bg-gray-50 dark:bg-gray-800 hover:bg-orange-50 dark:hover:bg-gray-700 transition-colors duration-300 border border-transparent hover:border-orange-200">
     <div className="inline-block p-4 rounded-full bg-white dark:bg-gray-900 text-orange-500 text-3xl shadow-sm mb-6">
       {icon}
     </div>

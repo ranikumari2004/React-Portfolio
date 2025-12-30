@@ -8,6 +8,7 @@ import Projects from "./pages/Projects";
 import Contact from "./pages/Contact";
 import Header from "./Components/Header";
 import Booter from "./Components/Booter";
+import Chatbot from "./Components/Chatbot";
 
 function App() {
   return (
@@ -21,7 +22,9 @@ function App() {
           <Route path="/projects" element={<Projects />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="*" element={<Home />} />
+          
         </Routes>
+        <Chatbot position="bottom-8 right-8" brand="#22c55e" />
       </main>
       {/* <Footer /> */}
       <Booter/>
