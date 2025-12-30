@@ -6,6 +6,7 @@ const Contact = () => {
     email: "",
     message: "",
   });
+  
 
   const [loading, setLoading] = useState(false);
   const [alert, setAlert] = useState({ show: false, type: "", text: "" });
@@ -24,7 +25,8 @@ const Contact = () => {
     setLoading(true);
 
     try {
-      const res = await fetch(`${process.env.REACT_APP_BACKEND_URL}/api/contact`, {
+      // REACT_APP ki jagah VITE use karein aur process.env ki jagah import.meta.env
+const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/contact`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
