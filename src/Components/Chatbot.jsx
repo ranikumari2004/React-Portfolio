@@ -64,10 +64,10 @@ const chatFlow = {
     message: "Hello friend! Thanks for stopping by. Wishing you a bug-free 2026! 🚀",
     options: ["Back to Menu"]
   },
-  "WhatsApp Me 💬": { link: "https://wa.me/919876543210?text=Hi%20Rani,%20I%20saw%20your%20portfolio..." }, 
-  "Send Email 📧": { link: "mailto:rani.kumari@example.com" },
-  "LinkedIn Profile 🔗": { link: "https://www.linkedin.com/in/rani-kumari" }, 
-  "Download Resume 📄": { link: "/resume.pdf" },
+  "WhatsApp Me 💬": { link: "https://wa.me/916206173716?text=Hi%20Rani,%20I%20saw%20your%20portfolio..." }, 
+  "Send Email 📧": { link: "mailto:rnistherock06@gmail.com" },
+  "LinkedIn Profile 🔗": { link: "https://www.linkedin.com/in/rani-kumari-250a47274/" }, 
+  "Download Resume 📄": { link: "/Rani Kumari.pdf" },
   "default": {
     message: "Is there anything else I can help you with?",
     options: ["Back to Menu"]
