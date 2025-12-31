@@ -90,7 +90,7 @@ const About = () => {
               <div className="space-y-10 max-w-4xl mx-auto border-l-4 border-orange-200 dark:border-gray-700 ml-4 md:ml-10 animate-fade-in-up">
                 {/* Jasya Consultancy */}
                 <TimelineCard 
-                  date="Aug 9, 2025 - Present" 
+                  date="Present" 
                   role="Full Stack Developer"
                   company="Jasya Consultancy Pvt. Ltd."
                   desc="Currently working as a Full Stack Developer. Building scalable web applications, solving real-world problems, and optimizing performance for better user experience."
@@ -99,7 +99,7 @@ const About = () => {
                 />
                 {/* CodeSoft */}
                 <TimelineCard 
-                  date="Aug 1, 2024 - Aug 31, 2024"
+                  date="1 Month"
                   role="Web Development Intern"
                   company="CodeSoft (Remote)"
                   desc="Completed a 1-month intensive remote internship. Built portfolio websites and calculator apps using HTML, CSS, & JS. Gained experience in remote collaboration."

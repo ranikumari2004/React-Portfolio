@@ -6,7 +6,7 @@ const Contact = () => {
     email: "",
     message: "",
   });
-  
+  const backendUrl = import.meta.env.VITE_BACKEND_URL.replace(/\/$/, "");
 
   const [loading, setLoading] = useState(false);
   const [alert, setAlert] = useState({ show: false, type: "", text: "" });
@@ -26,7 +26,7 @@ const Contact = () => {
 
     try {
       // REACT_APP ki jagah VITE use karein aur process.env ki jagah import.meta.env
-const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/contact`, {
+const res = await fetch(`${backendUrl}/api/contact`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
