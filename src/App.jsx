@@ -9,6 +9,9 @@ import Contact from "./pages/Contact";
 import Header from "./Components/Header";
 import Booter from "./Components/Booter";
 import Chatbot from "./Components/Chatbot";
+import Experience from "./pages/AboutMe/Experience";
+import Education from "./pages/AboutMe/Education";
+import Certificates from "./pages/AboutMe/Certificates";
 
 function App() {
   return (
@@ -22,6 +25,9 @@ function App() {
           <Route path="/projects" element={<Projects />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="*" element={<Home />} />
+          <Route path="/experience" element={<Experience/>}/>
+          <Route path="/education" element={<Education/>}/>
+          <Route path="/certificates" element={<Certificates/>}/>
           
         </Routes>
         <Chatbot position="bottom-8 right-8" brand="#22c55e" />

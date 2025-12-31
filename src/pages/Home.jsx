@@ -1,12 +1,23 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { Helmet, HelmetProvider } from "react-helmet-async"; // Import Helmet for SEO
 import { FaGithub, FaLinkedin, FaTwitter, FaReact, FaNodeJs, FaDatabase, FaLaptopCode, FaArrowRight } from "react-icons/fa";
 import { SiTailwindcss, SiMongodb, SiExpress, SiJavascript, SiHtml5, SiCss3, SiRedux, SiGit } from "react-icons/si";
-import Chatbot from "../Components/Chatbot";
+// import Chatbot from "../Components/Chatbot";
 import { TypeAnimation } from 'react-type-animation';
 
 const Home = () => {
   const [isChatOpen, setIsChatOpen] = useState(false);
+
+  // --- SEO DATA CONFIGURATION ---
+  const seoData = {
+    title: "Rani Kumari | MERN Stack Developer & Computer Engineer",
+    description: "Portfolio of Rani Kumari, a passionate Computer Engineer and MERN Stack Developer specializing in React.js, Node.js, and modern web solutions. Available for freelance projects.",
+    keywords: "Rani Kumari, Rani Kumari Portfolio, MERN Stack Developer, React Developer, Node.js Expert, Computer Engineer, Full Stack Web Developer, Freelance Web Developer India, Frontend Developer, Backend Architecture",
+    author: "Rani Kumari",
+    url: "https://ranikumari02.vercel.app/", // Yahan apna asli domain dalein
+    image: "https://ranikumari02.vercel.app//rani.png" // Yahan apni image ka full link dalein
+  };
 
   const marqueeStyle = {
     animation: 'scroll 25s linear infinite',
@@ -30,6 +41,59 @@ const Home = () => {
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900 transition-colors duration-300 overflow-hidden relative selection:bg-orange-500 selection:text-white">
       
+      {/* --- SEO SECTION START --- */}
+      <Helmet>
+        {/* Standard Metadata */}
+        <title>{seoData.title}</title>
+        <meta name="description" content={seoData.description} />
+        <meta name="keywords" content={seoData.keywords} />
+        <meta name="author" content={seoData.author} />
+        <meta name="robots" content="index, follow" />
+        <link rel="canonical" href={seoData.url} />
+
+        {/* Open Graph / Facebook / LinkedIn (Link share karne par photo dikhegi) */}
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={seoData.url} />
+        <meta property="og:title" content={seoData.title} />
+        <meta property="og:description" content={seoData.description} />
+        <meta property="og:image" content={seoData.image} />
+
+        {/* Twitter Card */}
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta property="twitter:url" content={seoData.url} />
+        <meta property="twitter:title" content={seoData.title} />
+        <meta property="twitter:description" content={seoData.description} />
+        <meta property="twitter:image" content={seoData.image} />
+
+        {/* JSON-LD Schema (Google ko batane ke liye ki ye ek Person ka portfolio hai) */}
+        <script type="application/ld+json">
+          {`
+            {
+              "@context": "https://schema.org",
+              "@type": "Person",
+              "name": "Rani Kumari",
+              "url": "${seoData.url}",
+              "image": "${seoData.image}",
+              "sameAs": [
+                "https://www.linkedin.com/in/rani-kumari-250a47274/",
+                "https://github.com/ranikumari2004/",
+                "https://x.com/RaniKumari54012"
+              ],
+              "jobTitle": "MERN Stack Developer",
+              "worksFor": {
+                "@type": "Organization",
+                "name": "Freelancer"
+              },
+              "alumniOf": {
+                "@type": "CollegeOrUniversity",
+                "name": "Computer Engineering"
+              }
+            }
+          `}
+        </script>
+      </Helmet>
+      {/* --- SEO SECTION END --- */}
+
       <style>{keyframes}</style>
 
       {/* --- BACKGROUND DECORATION --- */}
@@ -39,7 +103,6 @@ const Home = () => {
       </div>
 
       {/* --- HERO SECTION --- */}
-      {/* Added extra top padding (lg:pt-40) to prevent image from hitting the header */}
       <div className="relative z-10 pt-36 pb-20 lg:pt-40 lg:pb-32 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto flex flex-col-reverse lg:flex-row items-center gap-12">
         
         {/* Left Content */}
@@ -72,7 +135,6 @@ const Home = () => {
               ]}
               wrapper="span"
               speed={50}
-              // UPDATED: Removed underline classes
               className="text-orange-600 dark:text-orange-500 font-bold"
               repeat={Infinity}
             />
@@ -99,19 +161,15 @@ const Home = () => {
           </div>
         </div>
 
-        {/* Right Image (Floating Effect) - UPDATED STRUCTURE */}
+        {/* Right Image (Floating Effect) */}
         <div className="w-full lg:w-1/2 flex justify-center relative z-10 p-4">
-            {/* Animated Blob Background */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] h-[350px] bg-gradient-to-r from-orange-300 to-amber-200 dark:from-orange-800 dark:to-orange-900 rounded-full blur-3xl opacity-50 animate-pulse"></div>
             
-            {/* Image Container */}
-            {/* Added 'p-2' to create a small gap between image and border, helping with the cut-off issue */}
             <div className="relative w-72 md:w-96 aspect-square rounded-[2rem] bg-white dark:bg-gray-800 p-2 border border-gray-200 dark:border-gray-700 shadow-2xl animate-float">
                 <div className="w-full h-full rounded-[1.5rem] overflow-hidden">
                    <img 
                      src="/Rani.png" 
-                     alt="Rani Kumari" 
-                     // Using object-cover with object-top to focus on the face/top part correctly without cutting
+                     alt="Rani Kumari MERN Stack Developer" 
                      className="w-full h-full object-cover object-top hover:scale-110 transition-transform duration-500" 
                    />
                 </div>
@@ -119,7 +177,7 @@ const Home = () => {
         </div>
       </div>
 
-      {/* --- TECH STACK SECTION (Infinite Scroll) --- */}
+      {/* --- TECH STACK SECTION --- */}
       <div className="py-16 bg-white dark:bg-gray-800 border-y border-gray-100 dark:border-gray-700 overflow-hidden">
         <div className="text-center mb-10">
            <h2 className="text-2xl font-bold text-gray-400 uppercase tracking-widest">Powering my code with</h2>
@@ -193,8 +251,7 @@ const Home = () => {
         </div>
       </div>
 
-      {/* --- CHATBOT COMPONENT --- */}
-      <Chatbot isOpen={isChatOpen} onClose={() => setIsChatOpen(false)} />
+     
 
     </div>
   );
@@ -221,6 +278,7 @@ const SocialIcon = ({ href, icon }) => (
       target="_blank" 
       rel="noopener noreferrer" 
       className="w-12 h-12 flex items-center justify-center rounded-full border border-gray-300 dark:border-gray-700 text-xl hover:bg-orange-600 hover:text-white hover:border-orange-600 hover:-translate-y-1 transition-all duration-300"
+      aria-label="Social Link" // SEO Accessibility fix
     >
       {icon}
     </a>
